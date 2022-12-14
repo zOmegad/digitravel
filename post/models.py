@@ -7,4 +7,4 @@ class Post(models.Model):
 
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
-        return self.city
+        return str(self.id) + ": " + self.city
