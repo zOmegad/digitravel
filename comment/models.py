@@ -7,8 +7,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, default=None)
     user = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
-        related_name='user')
+        on_delete=models.CASCADE)
 
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
