@@ -8,3 +8,7 @@ class Post(models.Model):
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
         return str(self.id) + ": " + self.city
+
+class Photo(models.Model):
+    image = models.ImageField()
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
