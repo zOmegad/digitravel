@@ -1,5 +1,12 @@
 {% block content %}
 Ville : {{ post.city }}<br>
 Pays : {{ post.country }}<br>
-Langue : {{ post.language }}<br>
+Langue : {{ post.language }}<br><br><br><br><br><br>
+Commentaires : <br>
+{% for com in comments %}
+{{ com.id }}<br>
+{{ com.body }}<br>
+{{com.user}}<br><br>
+
+{% endfor %}
 {% endblock %}

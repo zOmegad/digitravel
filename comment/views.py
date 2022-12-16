@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from comment.models import Comment
 
-# Create your views here.
+def create():
+    pass
+
+def destroy():
+    pass

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from post.models import Post
+from comment.models import Comment
 
 
 def index(request):
@@ -8,4 +9,5 @@ def index(request):
 
 def show(request, post_id):
     item = Post.objects.get(pk=post_id)
-    return render(request, 'post/show.html', {'post': item})
+    comments = Comment.objects.filter(post_id=post_id)
+    return render(request, 'post/show.html', {'post': item, 'comments': comments})
