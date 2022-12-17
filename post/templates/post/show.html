@@ -1,8 +1,11 @@
+{% extends "base.html" %}
 {% block content %}
 Ville : {{ post.city }}<br>
 Pays : {{ post.country }}<br>
 Langue : {{ post.language }}<br><br><br>
+{% if user.is_authenticated %}
 {% include 'comment/create_comment_form.html' %}
+{% endif %}
 <br><br><br>
 Commentaires : <br>
 {% for com in comments %}
