@@ -7,7 +7,7 @@ from comment.models import Comment
 def create(request):
     new_comment = Comment()
     new_comment.body = request.POST.get("comment_body")
-    new_comment.user_id = User.objects.get(id=1).id
+    new_comment.user_id = request.user.id
     new_comment.post_id = int(request.POST.get("post_id"))
     new_comment.save()
     return redirect('/post/{}'.format(int(request.POST.get("post_id"))))
