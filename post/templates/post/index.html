@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 {% for item in post %}
-{{ item.city }}
+<a href="/post/{{ item.id }}">{{ item.city }}</a><br><br>
 {% endfor %}
 {% endblock %}

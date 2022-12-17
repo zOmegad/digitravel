@@ -20,6 +20,5 @@ def destroy(request):
         cur_comment.delete()
     else:
         return redirect('/post/{}'.format(post_id))
-    print(int(request.POST.get("comment_id")))
     return redirect('/post/{}'.format(post_id))
     
