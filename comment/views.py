@@ -8,7 +8,7 @@ def create(request):
     new_comment.user_id = User.objects.get(id=1).id
     new_comment.post_id = int(request.POST.get("post_id"))
     new_comment.save()
-    return redirect('/post/1')
+    return redirect('/post/{}'.format(int(request.POST.get("post_id"))))
 
 def destroy():
     pass
