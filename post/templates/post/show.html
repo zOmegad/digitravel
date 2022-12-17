@@ -9,6 +9,7 @@ Langue : {{ post.language }}<br><br><br>
 <br><br><br>
 Commentaires : <br>
 {% for com in comments %}
+{% include 'comment/destroy_comment_form.html' %}
 {{ com.id }}<br>
 {{ com.body }}<br>
 {{com.user}}<br><br>

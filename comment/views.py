@@ -13,5 +13,13 @@ def create(request):
     return redirect('/post/{}'.format(int(request.POST.get("post_id"))))
 
 @login_required
-def destroy():
-    pass
+def destroy(request):
+    cur_comment = Comment.objects.get(id=int(request.POST.get("comment_id")))
+    post_id = int(request.POST.get("post_id"))
+    if request.user == cur_comment.user:
+        cur_comment.delete()
+    else:
+        return redirect('/post/{}'.format(post_id))
+    print(int(request.POST.get("comment_id")))
+    return redirect('/post/{}'.format(post_id))
+    
