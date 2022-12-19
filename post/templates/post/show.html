@@ -3,6 +3,7 @@
 Ville : {{ post.city }}<br>
 Pays : {{ post.country }}<br>
 Langue : {{ post.language }}<br><br><br>
+Note : {{ post_score.avg_rating }} <br><br>
 {% if user.is_authenticated %}
 Créer une review :
 {% include 'review/create_review_form.html' %}
