@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from post.models import Post
 from comment.models import Comment
-
+from review.models import Review
 
 def index(request):
     item = Post.objects.all()
@@ -10,4 +10,5 @@ def index(request):
 def show(request, post_id):
     item = Post.objects.get(pk=post_id)
     comments = Comment.objects.filter(post_id=post_id)
-    return render(request, 'post/show.html', {'post': item, 'comments': comments})
+    reviews = Review.objects.filter(post_id=post_id)
+    return render(request, 'post/show.html', {'post': item, 'comments': comments, 'reviews': reviews})

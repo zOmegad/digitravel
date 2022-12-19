@@ -7,11 +7,20 @@ Langue : {{ post.language }}<br><br><br>
 Créer une review :
 {% include 'review/create_review_form.html' %}
 <br>
+{% for item in reviews %}
+Titre : {{ item.header }}<br>
+Body : {{ item.body }}<br>
+Score : {{ item.score }} <br>
+{% endfor %}
+{% endif %}
+
 <hr><br>
+{% if user.is_authenticated %}
 Créer un com
 {% include 'comment/create_comment_form.html' %}
 {% endif %}
 <br><br><br>
+Avis : <br>
 Commentaires : <br>
 {% for com in comments %}
 {% include 'comment/destroy_comment_form.html' %}
