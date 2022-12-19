@@ -4,6 +4,11 @@ Ville : {{ post.city }}<br>
 Pays : {{ post.country }}<br>
 Langue : {{ post.language }}<br><br><br>
 {% if user.is_authenticated %}
+Créer une review :
+{% include 'review/create_review_form.html' %}
+<br>
+<hr><br>
+Créer un com
 {% include 'comment/create_comment_form.html' %}
 {% endif %}
 <br><br><br>

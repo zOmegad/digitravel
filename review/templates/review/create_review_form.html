@@ -1,0 +1,17 @@
+<form action="{% url 'create_review' %}" role="form" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="post_id" value="{{ post.id }}">
+    Titre : 
+    <input type="text" name="review_header"><br>
+    Note : 
+    <select name="review_score" id="cars">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select><br>
+    Avis : 
+    <textarea name="review_body" id="" cols="30" rows="10"></textarea><br>
+    <button type="submit">Commenter</button>
+</form>
