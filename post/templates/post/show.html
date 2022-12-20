@@ -11,6 +11,7 @@ Auteur : {{ user_review.user.username }}<br>
 Titre : {{ user_review.header }}<br>
 Body : {{ user_review.body }}<br>
 Score : {{ user_review.score }} <br>
+{% include 'review/destroy_review_form.html' %}
 {% else %}
 Créer une review :
 {% include 'review/create_review_form.html' %}

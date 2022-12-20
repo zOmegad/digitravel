@@ -19,4 +19,6 @@ def create(request):
 
 @login_required
 def destroy(request):
-    pass
+    delete_review = Review.objects.get(id=int(request.POST.get("review_id")))
+    delete_review.delete()
+    return redirect('/post/{}'.format(int(request.POST.get("post_id"))))
