@@ -11,7 +11,7 @@ Créer une review :
 {% for item in reviews %}
 Titre : {{ item.header }}<br>
 Body : {{ item.body }}<br>
-Score : {{ item.score }} <br>
+Score : {{ item.post_score.avg_rating }} <br>
 {% endfor %}
 {% endif %}
 
