@@ -1,7 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from review.models import Review
 from django.db import IntegrityError
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 @login_required
