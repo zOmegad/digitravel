@@ -23,6 +23,7 @@ urlpatterns = [
     path('post/', include('post.urls')),
     path('post/comment/', include('comment.urls')),
     path('post/review/', include('review.urls')),
+    path('post/review/upvote', include('upvote.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path("accounts/", include("accounts.urls")),
 ]
