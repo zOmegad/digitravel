@@ -22,3 +22,12 @@ def destroy(request):
     delete_review = Review.objects.get(id=int(request.POST.get("review_id")))
     delete_review.delete()
     return redirect('/post/{}'.format(int(request.POST.get("post_id"))))
+
+@login_required
+def edit(request):
+    edit_review = Review.objects.get(id=int(request.POST.get("review_id")))
+    edit_review.score = request.POST.get("review_score")
+    edit_review.header = request.POST.get("review_header")
+    edit_review.body = request.POST.get("review_body")
+    edit_review.save()
+    return redirect('/post/{}'.format(int(request.POST.get("post_id"))))
