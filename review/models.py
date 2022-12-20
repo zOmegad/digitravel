@@ -17,3 +17,8 @@ class Review(models.Model):
     
     class Meta:
         unique_together = ('user', 'post',)
+    
+    @property
+    def number_of_upvotes(self):
+        from upvote.models import Upvote
+        return Upvote.objects.filter(review_id=self.id).count()

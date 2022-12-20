@@ -1,5 +1,4 @@
 from django.db import models
-from upvote.models import Upvote
 
 class Post(models.Model):
     city = models.CharField(max_length=40, unique=True)

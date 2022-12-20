@@ -3,7 +3,7 @@
 Ville : {{ post.city }}<br>
 Pays : {{ post.country }}<br>
 Langue : {{ post.language }}<br><br><br>
-Note : {{ post_score.avg_rating }} <br><br>
+Note : {{ post.post_score.avg_rating }} <br><br>
 {% if user.is_authenticated %}
 Créer une review :
 {% include 'review/create_review_form.html' %}
@@ -11,7 +11,8 @@ Créer une review :
 {% for item in reviews %}
 Titre : {{ item.header }}<br>
 Body : {{ item.body }}<br>
-Score : {{ item.post_score.avg_rating }} <br>
+Score : {{ item.score }} <br>
+Upvotes : {{ item.number_of_upvotes }} <br>
 {% endfor %}
 {% endif %}
 
