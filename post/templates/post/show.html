@@ -5,11 +5,21 @@ Pays : {{ post.country }}<br>
 Langue : {{ post.language }}<br><br><br>
 Note : {{ post.post_score.avg_rating }} <br><br>
 {% if user.is_authenticated %}
+{% if user_review %}
+<h2>Votre Review : </h2><br>
+Auteur : {{ user_review.user.username }}<br>
+Titre : {{ user_review.header }}<br>
+Body : {{ user_review.body }}<br>
+Score : {{ user_review.score }} <br>
+{% else %}
 Créer une review :
 {% include 'review/create_review_form.html' %}
-<br>
 {% endif %}
+<hr> <br>
+{% endif %}
+<h2>REVIEWS</h2>
 {% for rev in reviews %}
+Auteur : {{ rev.user.username }}<br>
 Titre : {{ rev.header }}<br>
 Body : {{ rev.body }}<br>
 Score : {{ rev.score }} <br>

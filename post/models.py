@@ -7,7 +7,7 @@ class Post(models.Model):
 
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
-        return "Id: {} | City: {} | Upvotes: {} ".format(self.id, self.city, self.upvotes.filter(upvoted=True).count())
+        return "Id: {} | City: {} ".format(self.id, self.city)
 
     @property
     def post_score(self):
