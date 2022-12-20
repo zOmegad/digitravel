@@ -8,15 +8,17 @@ Note : {{ post.post_score.avg_rating }} <br><br>
 Créer une review :
 {% include 'review/create_review_form.html' %}
 <br>
+{% endif %}
 {% for rev in reviews %}
 Titre : {{ rev.header }}<br>
 Body : {{ rev.body }}<br>
 Score : {{ rev.score }} <br>
+{% if user.is_authenticated %}
 {% include 'upvote/create_upvote_form.html' %}
+{% endif %}
 Upvotes : {{ rev.number_of_upvotes }} <br>
 {% endfor %}
-{% endif %}
-i
+
 <hr><br>
 {% if user.is_authenticated %}
 Créer un com
