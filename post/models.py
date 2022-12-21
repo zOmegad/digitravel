@@ -4,6 +4,9 @@ class Post(models.Model):
     city = models.CharField(max_length=40, unique=True)
     country = models.CharField(max_length=40)
     language = models.CharField(max_length=40)
+    population = models.IntegerField(default=0)
+    longitude = models.FloatField(default=0)
+    latitude = models.FloatField(default=0)
 
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
