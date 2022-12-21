@@ -4,6 +4,8 @@ from post.models import Post
 from comment.models import Comment
 from review.models import Review
 from django.core.exceptions import ObjectDoesNotExist
+from watson import search as watson
+
 
 def index(request):
     item = Post.objects.all()
@@ -26,3 +28,9 @@ def show(request, post_id):
             {'post': item, 
             'comments': comments, 
             'reviews': reviews})
+
+def search(request):
+    query = request.GET.get('query')
+    print(query)
+    item = watson.filter(Post, query)
+    return render(request, 'post/index.html', {'post': item})

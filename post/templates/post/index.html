@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+{% include 'post/search_form.html' %}
 {% for item in post %}
 <a href="/post/{{ item.id }}">{{ item.city }}</a><br>
 Score : {{ item.post_score.avg_rating }}<br><br>

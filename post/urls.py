@@ -1,5 +1,6 @@
 from django.urls import path
 
+
 from . import views
 
 
@@ -12,4 +13,7 @@ urlpatterns = [
         '<int:post_id>/',
         views.show,
         name='show'),
+    path('search/', 
+        views.search, 
+        name='search')
 ]
