@@ -9,6 +9,7 @@ class Post(models.Model):
     latitude = models.FloatField(default=0)
     currency = models.CharField(max_length=10, blank=True)
     continent = models.CharField(max_length=20)
+    region = models.CharField(max_length=30)
 
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
