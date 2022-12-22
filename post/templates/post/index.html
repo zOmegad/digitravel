@@ -2,6 +2,7 @@
 {% block content %}
 {% include 'post/search_form.html' %}
 {% if query %}
+{{post.paginator.count}}
 {{ post.count }} result(s) for {{ query }} <br>
 {% endif %}
 {% for item in post %}
