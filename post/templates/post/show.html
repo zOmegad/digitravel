@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 Ville : {{ post.city }}<br>
+Population : {{ post.population }}<br>
+Currency : {{ post.currency }}<br>
 Pays : {{ post.country }}<br>
+Continent : {{ post.continent }}<br>
+Region : {{ post.region }}<br>
 Langue : {{ post.language }}<br><br><br>
 Note : {{ post.post_score.avg_rating }} <br><br>
 {% if user.is_authenticated %}

@@ -29,7 +29,7 @@ class Command(BaseCommand):
                                 city = row[1],
                                 country = row[4],
                                 language = row[6],
-                                population = row[10],
+                                population = row[9],
                                 latitude = row[2],
                                 longitude = row[3],
                                 currency = cur_dict[row[4].lower()],
