@@ -7,6 +7,7 @@ class Post(models.Model):
     population = models.IntegerField(default=0)
     longitude = models.FloatField(default=0)
     latitude = models.FloatField(default=0)
+    currency = models.CharField(max_length=10, blank=True)
 
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
