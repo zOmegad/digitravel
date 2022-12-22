@@ -1,0 +1,30 @@
+{% if post.has_previous %}
+  <a href="?page={{ post.previous_page_number }}{% if query %}&query={{ query }}{% endif %}">« Previous page</a>
+
+  {% if post.number > 3 %}
+    <a href="?page=1{% if query %}&query={{ query }}{% endif %}">1</a>
+    {% if post.number > 4 %}
+      <span>...</span>
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+{% for num in post.paginator.page_range %}
+  {% if post.number == num %}
+    <a href="?page={{ num }}{% if query %}&query={{ query }}{% endif %}">{{ num }}</a>
+  {% elif num > post.number|add:'-3' and num < post.number|add:'3' %}
+    <a href="?page={{ num }}{% if query %}&query={{ query }}{% endif %}">{{ num }}</a>
+  {% endif %}
+{% endfor %}
+
+{% if post.has_next %}
+  {% if post.number < post.paginator.num_pages|add:'-3' %}
+    <span>...</span>
+
+    <a href="?page={{ post.paginator.num_pages }}{% if query %}&query={{ query }}{% endif %}">{{ post.paginator.num_pages }}</a>
+  {% elif post.number < post.paginator.num_pages|add:'-2' %}
+    <a href="?page={{ post.paginator.num_pages }}{% if query %}&query={{ query }}{% endif %}">{{ post.paginator.num_pages }}</a>
+  {% endif %}
+
+  <a href="?page={{ post.next_page_number }}{% if query %}&query={{ query }}{% endif %}">Next Page »</a>
+{% endif %}

@@ -22,6 +22,9 @@ class Post(models.Model):
         my_review = Review.objects.filter(post_id=self.id)
         post_score = my_review.aggregate(avg_rating=Avg('score'))
         return post_score
+    
+    class Meta:
+        ordering = ['-id']
 
 class Photo(models.Model):
     image = models.ImageField()

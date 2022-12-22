@@ -5,11 +5,18 @@ from comment.models import Comment
 from review.models import Review
 from django.core.exceptions import ObjectDoesNotExist
 from watson import search as watson
+from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
 
 
 def index(request):
     item = Post.objects.all()
-    return render(request, 'post/index.html', {'post': item})
+    item_paginator = Paginator(item, 10)
+    page_num = request.GET.get('page')
+    try:
+        page_obj = item_paginator.page(page_num)
+    except (EmptyPage, PageNotAnInteger):
+        page_obj = item_paginator.page(1)
+    return render(request, 'post/index.html', {'post': page_obj})
 
 def show(request, post_id):
     item = Post.objects.get(pk=post_id)
@@ -31,7 +38,13 @@ def show(request, post_id):
 
 def search(request):
     query = request.GET.get('query')
-    print(query)
+    page_num = request.GET.get('page')
+    print(page_num)
     item = watson.filter(Post, query)
-    item = item.filter(currency=None)
-    return render(request, 'post/index.html', {'post': item})
+    item_paginator = Paginator(item, 10)
+    try:
+        page_obj = item_paginator.page(page_num)
+    except (EmptyPage, PageNotAnInteger):
+        page_obj = item_paginator.page(1)
+
+    return render(request, 'post/index.html', {'post': page_obj, 'query': query})

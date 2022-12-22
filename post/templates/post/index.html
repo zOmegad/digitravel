@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 {% include 'post/search_form.html' %}
-{{ post.count }} result(s) <br>
+{% if query %}
+{{ post.count }} result(s) for {{ query }} <br>
+{% endif %}
 {% for item in post %}
 <a href="/post/{{ item.id }}">{{ item.city }}</a><br>
 Score : {{ item.post_score.avg_rating }}<br><br>
 {% endfor %}
+{% include 'pagination/pagination.html' %}
 {% endblock %}
