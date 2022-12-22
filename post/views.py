@@ -33,4 +33,5 @@ def search(request):
     query = request.GET.get('query')
     print(query)
     item = watson.filter(Post, query)
+    item = item.filter(currency=None)
     return render(request, 'post/index.html', {'post': item})
