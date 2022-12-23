@@ -1,13 +1,20 @@
-<form action="{% url 'search' %}" method="GET">
-    <input id="value" type="text" name="query">
-    <select name="continent_s">
-        <option value="None">--continent--</option>
-        <option value="Asia">Asia</option>
-        <option value="Africa">Africa</option>
-        <option value="Europe">Europe</option>
-        <option value="North America">North America</option>
-        <option value="Oceania">Oceania</option>
-        <option value="South America">South America</option>
+<form action="{% url 'search' %}" class="flex mb-4" method="GET">
+    <div class="input-group input-group-outline w-full w-3/5 h-12">
+      <label class="form-label">Recherche</label>
+      <input id="value" class="form-control" type="text" name="query">
+    </div>
+     <div class="w-full w-1/5 h-12">
+      <select name="continent_s">
+          <option value="None">--continent--</option>
+          <option value="Asia">Asia</option>
+          <option value="Africa">Africa</option>
+          <option value="Europe">Europe</option>
+          <option value="North America">North America</option>
+          <option value="Oceania">Oceania</option>
+          <option value="South America">South America</option>
       </select>
-    <button class="button button-dark" data-ripple-light="true" type="submit" value="Submit">Rechercher</button>
-</form>
+    </div>
+      <div class="w-full w-1/5 h-12">
+        <button class="button button-dark" data-ripple-light="true" type="submit" value="Submit">Rechercher</button>
+      </div>
+  </form>
