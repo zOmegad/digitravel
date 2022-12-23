@@ -5,3 +5,6 @@ p = Post.objects.get(id=2)
 i = p.upvotes.filter(upvoted=True)
 for t in i:
     print(t.user)
+
+# tailwind
+python3 manage.py tailwind start
