@@ -4,9 +4,8 @@
  * If you need the full config, get it from here:
  * https://unpkg.com/browse/tailwindcss@latest/stubs/defaultConfig.stub.js
  */
-const withMT = require("@material-tailwind/html/utils/withMT");
 
-module.exports = withMT({
+module.exports = {
     content: [
         /**
          * HTML. Paths to Django template files that will contain Tailwind CSS classes.
@@ -41,6 +40,8 @@ module.exports = withMT({
          * and make sure the pattern below matches your project structure.
          */
         // '../../**/*.py'
+        "./node_modules/flowbite/**/*.js",
+
     ],
     theme: {
         extend: {},
@@ -51,9 +52,6 @@ module.exports = withMT({
          * for forms. If you don't like it or have own styling for forms,
          * comment the line below to disable '@tailwindcss/forms'.
          */
-        require('@tailwindcss/forms'),
-        require('@tailwindcss/typography'),
-        require('@tailwindcss/line-clamp'),
-        require('@tailwindcss/aspect-ratio'),
+        require('flowbite/plugin'),
     ],
-});
+}
