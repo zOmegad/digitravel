@@ -2,7 +2,15 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    <title>Django Tailwind</title>
+    <title>Digitravel</title>
+			<!-- stylesheet -->
+		<link
+		href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
+		rel="stylesheet"
+		/>
+
+		<!-- script -->
+		<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/script-name.js"></script>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,9 +18,11 @@
 	</head>
 
 	<body>
+		<div class="container">
 			{% include "nav.html" %}
 			Digitravel :) <br>
 			{% block content %}
 			{% endblock %}
+		</div>
 	</body>
 </html>

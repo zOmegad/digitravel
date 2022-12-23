@@ -4,8 +4,9 @@
  * If you need the full config, get it from here:
  * https://unpkg.com/browse/tailwindcss@latest/stubs/defaultConfig.stub.js
  */
+const withMT = require("@material-tailwind/html/utils/withMT");
 
-module.exports = {
+module.exports = withMT({
     content: [
         /**
          * HTML. Paths to Django template files that will contain Tailwind CSS classes.
@@ -55,4 +56,4 @@ module.exports = {
         require('@tailwindcss/line-clamp'),
         require('@tailwindcss/aspect-ratio'),
     ],
-}
+});

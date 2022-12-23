@@ -50,6 +50,8 @@ INSTALLED_APPS = [
 
 TAILWIND_APP_NAME = 'theme'
 
+NPM_BIN_PATH = '/opt/homebrew/bin/npm'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
