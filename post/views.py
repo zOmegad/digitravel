@@ -12,6 +12,7 @@ def index(request):
     item = Post.objects.all()
     item_paginator = Paginator(item, 10)
     page_num = request.GET.get('page')
+    print(item.order_by().values_list('continent').distinct())
     try:
         page_obj = item_paginator.page(page_num)
     except (EmptyPage, PageNotAnInteger):
@@ -39,8 +40,11 @@ def show(request, post_id):
 def search(request):
     query = request.GET.get('query')
     page_num = request.GET.get('page')
-    print(page_num)
+    post_continent = request.GET.get('continent_s')
     item = watson.filter(Post, query)
+    if post_continent != "None":
+        item = item.filter(continent=post_continent)
+
     item_paginator = Paginator(item, 10)
     try:
         page_obj = item_paginator.page(page_num)
