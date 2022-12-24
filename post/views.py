@@ -12,7 +12,7 @@ def index(request):
     item = Post.objects.all()
     item_paginator = Paginator(item, 10)
     page_num = request.GET.get('page')
-    print(item.order_by().values_list('continent').distinct())
+    #print(item.order_by().values_list('continent').distinct())
     try:
         page_obj = item_paginator.page(page_num)
     except (EmptyPage, PageNotAnInteger):
