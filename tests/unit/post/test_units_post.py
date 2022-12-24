@@ -26,7 +26,3 @@ class ShowPageTestCase(TestCase):
     def test_show_with_product_returns_200(self):
         response = self.client.get(reverse('show', args=[self.post.id]))
         self.assertEqual(response.status_code, 200)
-
-    def test_show_data_is_correct(self):
-        response = self.client.get(reverse('show', args=[self.post.id]))
-        self.assertEqual(response.post, True)
