@@ -27,5 +27,7 @@ class Post(models.Model):
         ordering = ['-id']
 
 class Photo(models.Model):
-    image = models.ImageField()
+    image = models.ImageField(blank=True)
+    image_url = models.CharField(blank=True, max_length=200)
+    author = models.CharField(blank=True, max_length=90)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
