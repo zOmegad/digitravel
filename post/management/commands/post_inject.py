@@ -28,7 +28,7 @@ class Command(BaseCommand):
                             new_post = Post.objects.create(
                                 city = row[1],
                                 country = row[4],
-                                language = row[6],
+                                language = row[5],
                                 population = row[9],
                                 latitude = row[2],
                                 longitude = row[3],
