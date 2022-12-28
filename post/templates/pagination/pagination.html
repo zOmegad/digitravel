@@ -1,30 +1,51 @@
-{% if post.has_previous %}
-  <a href="?page={{ post.previous_page_number }}{% if query %}&query={{ query }}{% endif %}">« Previous page</a>
-
-  {% if post.number > 3 %}
-    <a href="?page=1{% if query %}&query={{ query }}{% endif %}">1</a>
-    {% if post.number > 4 %}
-      <span>...</span>
+<div class="flex flex-wrap justify-center mt-4 mb-4">
+  <nav aria-label="Page navigation example">
+    <ul class="inline-flex -space-x-px">
+  {% if post.has_previous %}
+  <li>
+    <a href="?page={{ post.previous_page_number }}{% if query %}&query={{ query }}{% endif %}" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">« Previous page</a>
+  </li>
+    {% if post.number > 3 %}
+    <li>
+      <a href="?page=1{% if query %}&query={{ query }}{% endif %}" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+    </li>  
+      {% if post.number > 4 %}
+      <li>
+        <span class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</span>
+      </li>
+        {% endif %}
     {% endif %}
   {% endif %}
-{% endif %}
 
-{% for num in post.paginator.page_range %}
-  {% if post.number == num %}
-    <a href="?page={{ num }}{% if query %}&query={{ query }}{% endif %}">{{ num }}</a>
-  {% elif num > post.number|add:'-3' and num < post.number|add:'3' %}
-    <a href="?page={{ num }}{% if query %}&query={{ query }}{% endif %}">{{ num }}</a>
+  {% for num in post.paginator.page_range %}
+    {% if post.number == num %}
+    <li>
+      <a href="?page={{ num }}{% if query %}&query={{ query }}{% endif %}" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{ num }}</a>
+    </li>
+      {% elif num > post.number|add:'-3' and num < post.number|add:'3' %}
+    <li>
+      <a href="?page={{ num }}{% if query %}&query={{ query }}{% endif %}" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{ num }}</a>
+    </li>
+      {% endif %}
+  {% endfor %}
+
+  {% if post.has_next %}
+    {% if post.number < post.paginator.num_pages|add:'-3' %}
+    <li>
+      <span class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</span>
+    </li>
+    <li>
+      <a href="?page={{ post.paginator.num_pages }}{% if query %}&query={{ query }}{% endif %}" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{ post.paginator.num_pages }}</a>
+    </li>
+      {% elif post.number < post.paginator.num_pages|add:'-2' %}
+    <li>
+      <a href="?page={{ post.paginator.num_pages }}{% if query %}&query={{ query }}{% endif %}" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{{ post.paginator.num_pages }}</a>
+    </li>
+      {% endif %}
+    <li>
+    <a href="?page={{ post.next_page_number }}{% if query %}&query={{ query }}{% endif %}" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next Page »</a>
+    </li>
   {% endif %}
-{% endfor %}
-
-{% if post.has_next %}
-  {% if post.number < post.paginator.num_pages|add:'-3' %}
-    <span>...</span>
-
-    <a href="?page={{ post.paginator.num_pages }}{% if query %}&query={{ query }}{% endif %}">{{ post.paginator.num_pages }}</a>
-  {% elif post.number < post.paginator.num_pages|add:'-2' %}
-    <a href="?page={{ post.paginator.num_pages }}{% if query %}&query={{ query }}{% endif %}">{{ post.paginator.num_pages }}</a>
-  {% endif %}
-
-  <a href="?page={{ post.next_page_number }}{% if query %}&query={{ query }}{% endif %}">Next Page »</a>
-{% endif %}
+  </ul>
+  </nav>
+</div>
