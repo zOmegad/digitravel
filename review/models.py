@@ -5,7 +5,13 @@ from post.models import Post
 class Review(models.Model):
     header = models.CharField(max_length=90)
     body = models.TextField(max_length=800)
-    score = models.IntegerField()
+    score = models.FloatField()
+    internet = models.IntegerField()
+    hospitality = models.IntegerField()
+    fun = models.IntegerField()
+    cost = models.IntegerField()
+    safety = models.IntegerField()
+    life_quality = models.IntegerField()
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(
         User,
