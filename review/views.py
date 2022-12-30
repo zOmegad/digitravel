@@ -32,8 +32,16 @@ def destroy(request):
 @login_required
 def edit(request):
     edit_review = Review.objects.get(id=int(request.POST.get("review_id")))
-    edit_review.score = request.POST.get("review_score")
-    edit_review.header = request.POST.get("review_header")
-    edit_review.body = request.POST.get("review_body")
-    edit_review.save()
+    edit_review.internet = request.POST.get("internet")
+    edit_review.hospitality = request.POST.get("hospitality")
+    edit_review.cost = request.POST.get("cost")
+    edit_review.safety = request.POST.get("safety")
+    edit_review.life_quality = request.POST.get("life_quality")
+    edit_review.fun = request.POST.get("fun")
+    edit_review.header = request.POST.get("header")
+    edit_review.body = request.POST.get("body")
+    try:
+        edit_review.save()
+    except KeyError as e:
+        print(e)
     return redirect('/post/{}'.format(int(request.POST.get("post_id"))))

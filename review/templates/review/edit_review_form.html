@@ -1,19 +1,91 @@
-<form action="{% url 'edit_review' %}" role="form" method="post">
-    {% csrf_token %}
-    <input type="hidden" name="post_id" value="{{ post.id }}">
-    <input type="hidden" name="review_id" value="{{ user_review.id }}">
-    Titre : 
-    <input type="text" name="review_header" value="{{ user_review.header }}"><br>
-    Note : 
-    <select name="review_score" id="cars">
-        <option value="{{ user_review.score }}" selected hidden>{{ user_review.score }}</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select><br>
-    Avis : 
-    <textarea name="review_body" id="" cols="30" rows="10">{{ user_review.body }}</textarea><br>
-    <button type="submit">Mettre à jour</button>
-</form>
+<section class="bg-white dark:bg-gray-900">
+  <div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
+      <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Update review</h2>
+      <form action="{% url 'edit_review' %}" role="form" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="post_id" value="{{ post.id }}">
+        <input type="hidden" name="review_id" value="{{ user_review.id }}">
+          <div class="grid gap-4 mb-4 sm:grid-cols-3 sm:gap-6 sm:mb-5">
+              <div class="sm:col-span-3">
+                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Header</label>
+                  <input type="text" name="header" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ user_review.header }}" required="">
+              </div>
+              <div class="w-full">
+                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Internet</label>
+                <select name="internet" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option value="{{user_review.internet}}">{{user_review.internet}}</option>
+                  <option value="1">⭐️⭐️⭐️⭐️⭐️</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>              </div>
+              <div class="w-full">
+              <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hospitality</label>
+              <select name="hospitality" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option value="{{user_review.hospitality}}">{{user_review.hospitality}}</option>
+                  <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div>
+              <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cost</label>
+              <select name="cost" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option value="{{user_review.cost}}">{{user_review.cost}}</option>
+                  <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+              <div class="w-full">
+                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Safety</label>
+                <select name="safety" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option value="{{user_review.safety}}">{{user_review.safety}}</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>              </div>
+              <div>
+                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Life quality</label>
+                <select name="life_quality" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option value="{{user_review.life_quality}}">{{user_review.life_quality}}</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div>
+                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fun</label>
+                <select name="fun" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option value="{{user_review.fun}}">{{user_review.fun}}</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>              </div> 
+              <div class="sm:col-span-3">
+                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
+                <textarea name="body" id="message" rows="5" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >{{user_review.body}}</textarea>
+              </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+              <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                  Update review
+              </span>
+            </button>
+          </div>
+      </form>
+      {% include 'review/destroy_review_form.html' %}
+  </div>
+</section>
