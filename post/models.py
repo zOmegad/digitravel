@@ -15,12 +15,12 @@ class Post(models.Model):
         """String for representing the MyModelName object (in Admin site etc.)."""
         return "Id: {} | City: {} ".format(self.id, self.city)
 
-    @property
-    def post_score(self):
+    # return avg of scores according to field arg
+    def post_score(self, field):
         from django.db.models import Avg
         from review.models import Review
         my_review = Review.objects.filter(post_id=self.id)
-        post_score = my_review.aggregate(avg_rating=Avg('score'))
+        post_score = my_review.aggregate(avg_rating=Avg(field))
         return post_score
     
     class Meta:
