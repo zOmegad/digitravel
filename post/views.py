@@ -29,12 +29,19 @@ def show(request, post_id):
             {'post': item, 
             'comments': comments,
             'user_review': user_review,
-            'reviews': reviews})
+            'reviews': reviews,
+            'post_score': item.post_score('score')["avg_rating"],
+            'post_internet': item.post_score('internet')["avg_rating"],
+            'post_fun': item.post_score('fun')["avg_rating"],
+            'post_safety': item.post_score('safety')["avg_rating"],
+            'post_cost': item.post_score('cost')["avg_rating"],
+            'post_life_quality': item.post_score('life_quality')["avg_rating"],
+            'post_hospitality': item.post_score('hospitality')["avg_rating"]})
     except ObjectDoesNotExist:
         reviews = Review.objects.filter(post_id=post_id)
-        return render(request, 'post/show.html', 
+        return render(request, 'post/show.html',
             {'post': item, 
-            'comments': comments, 
+            'comments': comments,
             'reviews': reviews})
 
 def search(request):

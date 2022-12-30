@@ -37,6 +37,10 @@
         </li>
     </ul>
     </div>
+    <br>
+    <hr>
+    <br>
+    {% include 'review/global_review.html'%}
 </div>
 Note : {{ post.post_score.avg_rating }} <br><br>
 </div>
@@ -67,17 +71,7 @@ Note : {{ post.post_score.avg_rating }} <br><br>
         {% endif %}
         <hr> <br>
         {% endif %}
-        <h2>REVIEWS</h2>
-        {% for rev in reviews %}
-        Auteur : {{ rev.user.username }}<br>
-        Titre : {{ rev.header }}<br>
-        Body : {{ rev.body }}<br>
-        Score : {{ rev.score }} <br>
-        {% if user.is_authenticated %}
-        {% include 'upvote/create_upvote_form.html' %}
-        {% endif %}
-        Upvotes : {{ rev.number_of_upvotes }} <br>
-        {% endfor %}
+        {% include 'review/index_review.html' %}
     </div>
     <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
         {% if user.is_authenticated %}

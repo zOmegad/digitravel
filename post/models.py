@@ -23,6 +23,14 @@ class Post(models.Model):
         post_score = my_review.aggregate(avg_rating=Avg(field))
         return post_score
     
+    @property
+    def post_index_score(self):
+        from django.db.models import Avg
+        from review.models import Review
+        my_review = Review.objects.filter(post_id=self.id)
+        post_score = my_review.aggregate(avg_rating=Avg('score'))
+        return post_score
+    
     class Meta:
         ordering = ['-id']
 
