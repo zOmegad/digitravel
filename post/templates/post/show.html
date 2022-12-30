@@ -42,45 +42,59 @@ Note : {{ post.post_score.avg_rating }} <br><br>
 </div>
 
 </div>
-{% if user.is_authenticated %}
-{% if user_review %}
-<h2>Votre Review : </h2><br>
-Auteur : {{ user_review.user.username }}<br>
-Titre : {{ user_review.header }}<br>
-Body : {{ user_review.body }}<br>
-Score : {{ user_review.score }} <br>
-{% include 'review/edit_review_form.html' %}
-{% else %}
-{% include 'review/create_review_form.html' %}
-{% endif %}
-<hr> <br>
-{% endif %}
-<h2>REVIEWS</h2>
-{% for rev in reviews %}
-Auteur : {{ rev.user.username }}<br>
-Titre : {{ rev.header }}<br>
-Body : {{ rev.body }}<br>
-Score : {{ rev.score }} <br>
-{% if user.is_authenticated %}
-{% include 'upvote/create_upvote_form.html' %}
-{% endif %}
-Upvotes : {{ rev.number_of_upvotes }} <br>
-{% endfor %}
 
-<hr><br>
-{% if user.is_authenticated %}
-Créer un com
-{% include 'comment/create_comment_form.html' %}
-{% endif %}
-<br><br><br>
-Avis : <br>
-Commentaires : <br>
-{% for com in comments %}
-{% include 'comment/destroy_comment_form.html' %}
-{{ com.id }}<br>
-{{ com.body }}<br>
-{{com.user}}<br><br>
-{% endfor %}
+<div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+    <ul class="flex justify-center gap-12 -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+        <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 rounded-t-lg border-b-2" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Reviews</button>
+        </li>
+        <li class="mr-2" role="presentation">
+            <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Comments</button>
+        </li>
+</div>
+<div id="myTabContent">
+    <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        {% if user.is_authenticated %}
+        {% if user_review %}
+        <h2>Votre Review : </h2><br>
+        Auteur : {{ user_review.user.username }}<br>
+        Titre : {{ user_review.header }}<br>
+        Body : {{ user_review.body }}<br>
+        Score : {{ user_review.score }} <br>
+        {% include 'review/edit_review_form.html' %}
+        {% else %}
+        {% include 'review/create_review_form.html' %}
+        {% endif %}
+        <hr> <br>
+        {% endif %}
+        <h2>REVIEWS</h2>
+        {% for rev in reviews %}
+        Auteur : {{ rev.user.username }}<br>
+        Titre : {{ rev.header }}<br>
+        Body : {{ rev.body }}<br>
+        Score : {{ rev.score }} <br>
+        {% if user.is_authenticated %}
+        {% include 'upvote/create_upvote_form.html' %}
+        {% endif %}
+        Upvotes : {{ rev.number_of_upvotes }} <br>
+        {% endfor %}
+    </div>
+    <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+        {% if user.is_authenticated %}
+        Créer un com
+        {% include 'comment/create_comment_form.html' %}
+        {% endif %}
+        <br><br><br>
+        Avis : <br>
+        Commentaires : <br>
+        {% for com in comments %}
+        {% include 'comment/destroy_comment_form.html' %}
+        {{ com.id }}<br>
+        {{ com.body }}<br>
+        {{com.user}}<br><br>
+        {% endfor %}
+    </div>
+</div>
 <script>
     const getFlagEmoji = (countryCode) => countryCode.toUpperCase().replace(/./g,
     char => String.fromCodePoint(127397 + char.charCodeAt())
