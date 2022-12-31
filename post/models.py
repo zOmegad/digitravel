@@ -32,7 +32,7 @@ class Post(models.Model):
         return post_score
     
     class Meta:
-        ordering = ['-id']
+        ordering = ('review', )
 
 class Photo(models.Model):
     image = models.ImageField(blank=True)
