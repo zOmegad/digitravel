@@ -1,0 +1,16 @@
+{% for com in comments %}
+<article class="p-5">
+    <div class="flex flex-wrap">
+        <div class="flex items-center mb-4 space-x-4">
+            <p>{{ com.user }} :</p>
+        </div>
+        <div>
+            <p class="mb-2 font-light dark:text-gray-400">{{ com.body }}</p>    
+        </div>
+    </div>
+    {% if com.user == user %}
+    {% include 'comment/destroy_comment_form.html' %}
+    {% endif %}
+    <hr>
+</article>
+{% endfor %}
