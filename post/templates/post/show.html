@@ -28,7 +28,7 @@
                         👫 {{ post.population|intcomma }}
                     </li>
                     <li class="flex items-center">
-
+                        {{post.latitude}}, {{post.longitude}}
                     </li>
                 </ul>
             </div>
@@ -39,6 +39,8 @@
         </div>
     </div>
 </div>
+
+<div id='map' class="full-w" style='height: 300px;'></div>
 
 <!-- Comment/Review Section -->
 
@@ -107,5 +109,15 @@
 
     const flagReplace = document.querySelectorAll('[data-flag]');
     flagReplace.forEach(s => s.innerHTML = getFlagEmoji(s.dataset.flag))
+</script>
+
+<script>
+mapboxgl.accessToken = '{{map_api}}';
+const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/omegad/clcgfh3xi00bp14n69gzzz7um', // style URL
+    center: [{{post.longitude}}, {{post.latitude}}], // starting position [lng, lat]
+    zoom: 9, // starting zoom
+});
 </script>
 {% endblock %}

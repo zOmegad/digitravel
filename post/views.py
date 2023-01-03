@@ -6,7 +6,8 @@ from review.models import Review
 from django.core.exceptions import ObjectDoesNotExist
 from watson import search as watson
 from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
-
+import os
+from dotenv import load_dotenv
 
 def index(request):
     item = Post.objects.all()
@@ -20,6 +21,7 @@ def index(request):
     return render(request, 'post/index.html', {'post': page_obj})
 
 def show(request, post_id):
+    load_dotenv()
     item = Post.objects.get(pk=post_id)
     comments = Comment.objects.filter(post_id=post_id)
     try:
@@ -36,7 +38,8 @@ def show(request, post_id):
             'post_safety': item.post_score('safety')["avg_rating"],
             'post_cost': item.post_score('cost')["avg_rating"],
             'post_life_quality': item.post_score('life_quality')["avg_rating"],
-            'post_hospitality': item.post_score('hospitality')["avg_rating"]})
+            'post_hospitality': item.post_score('hospitality')["avg_rating"],
+            'map_api': os.getenv('MAPBOX_API')})
     except ObjectDoesNotExist:
         reviews = Review.objects.filter(post_id=post_id)
         return render(request, 'post/show.html',
