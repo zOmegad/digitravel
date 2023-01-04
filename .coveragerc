@@ -1,0 +1,17 @@
+[run]
+source = .
+[report]
+omit =
+    env/*
+    */migrations/*
+    */admin.py
+    */test_*
+    */apps.py
+    */__init__.py
+    digitravel/settings.py
+    manage.py
+    digitravel/asgi.py
+    digitravel/wsgi.py
+fail_under = 80
+show_missing = True
+skip_covered = False
