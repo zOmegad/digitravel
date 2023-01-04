@@ -17,7 +17,4 @@ def destroy(request):
     post_id = int(request.POST.get("post_id"))
     if request.user == cur_comment.user:
         cur_comment.delete()
-    else:
-        return redirect('/post/{}'.format(post_id))
     return redirect('/post/{}'.format(post_id))
-    

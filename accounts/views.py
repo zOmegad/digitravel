@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.contrib.auth import login
+from review.models import Review
+from comment.models import Comment
 
 
 class SignUpView(UserPassesTestMixin, generic.CreateView):
@@ -25,4 +27,8 @@ class SignUpView(UserPassesTestMixin, generic.CreateView):
 
 @login_required
 def profile(request):
-    return render(request, 'profile/profile.html')
+    user_reviews = Review.objects.filter(user_id=request.user.id)
+    user_comments = Comment.objects.filter(user_id=request.user.id)
+    return render(request, 'profile/profile.html', {
+        'user_reviews': user_reviews,
+        'user_comments': user_comments})
