@@ -47,8 +47,8 @@
         <!---->
     </div>
     <div>
-        <!-- Weather widget -->
-
+        <!-- Skyscanner widget -->
+        <div data-skyscanner-widget="FlightSearchWidget" data-destination-name="{{post.city}}"></div>
         <!---->
     </div>
 </div>
@@ -129,4 +129,5 @@ const map = new mapboxgl.Map({
     zoom: 9, // starting zoom
 });
 </script>
+<script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script> 
 {% endblock %}
