@@ -10,15 +10,15 @@ for t in i:
 install tailwind : https://tailwindcss.com/docs/installation?ref=material-tailwind
 Flowbite tailwind doc : https://flowbite.com/docs/getting-started/django/
 
-```bash
+```shell
 python3 manage.py tailwind start
 ```
 # Run test 
-```python
+```shell
 python3 manage.py test --pattern="test_*.py"
 ```
 # Coverage :
-```python
+```shell
 python3 -m coverage run --rcfile=.coveragerc manage.py test
 python3 -m coverage report --rcfile=.coveragerc
 ```
