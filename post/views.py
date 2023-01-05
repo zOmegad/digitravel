@@ -27,7 +27,10 @@ def show(request, post_id):
     try:
         user_review = Review.objects.get(post_id=post_id, user_id=request.user.id)
         reviews = Review.objects.filter(post_id=post_id) # à changer (ne pas inclure le review du current user)
-        return render(request, 'post/show.html', 
+    except ObjectDoesNotExist:
+        reviews = Review.objects.filter(post_id=post_id)
+        user_review = None
+    return render(request, 'post/show.html', 
             {'post': item, 
             'comments': comments,
             'user_review': user_review,
@@ -40,12 +43,6 @@ def show(request, post_id):
             'post_life_quality': item.post_score('life_quality')["avg_rating"],
             'post_hospitality': item.post_score('hospitality')["avg_rating"],
             'map_api': os.getenv('MAPBOX_API')})
-    except ObjectDoesNotExist:
-        reviews = Review.objects.filter(post_id=post_id)
-        return render(request, 'post/show.html',
-            {'post': item, 
-            'comments': comments,
-            'reviews': reviews})
 
 def search(request):
     query = request.GET.get('query')

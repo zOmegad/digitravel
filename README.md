@@ -19,6 +19,5 @@ python3 manage.py test --pattern="test_*.py"
 ```
 # Coverage :
 ```shell
-python3 -m coverage run --rcfile=.coveragerc manage.py test
-python3 -m coverage report --rcfile=.coveragerc
+python3 -m coverage run manage.py test --pattern="test_*.py" && python3 -m coverage report --rcfile=.coveragerc
 ```
