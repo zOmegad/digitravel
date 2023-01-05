@@ -24,11 +24,10 @@ def show(request, post_id):
     load_dotenv()
     item = Post.objects.get(pk=post_id)
     comments = Comment.objects.filter(post_id=post_id)
+    reviews = Review.objects.filter(post_id=post_id)
     try:
         user_review = Review.objects.get(post_id=post_id, user_id=request.user.id)
-        reviews = Review.objects.filter(post_id=post_id) # à changer (ne pas inclure le review du current user)
     except ObjectDoesNotExist:
-        reviews = Review.objects.filter(post_id=post_id)
         user_review = None
     return render(request, 'post/show.html', 
             {'post': item, 
