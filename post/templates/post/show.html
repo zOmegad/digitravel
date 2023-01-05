@@ -167,11 +167,9 @@
                                     {% include 'post/stars.html'%}
                                     <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">{{ user_review.score|floatformat|default:"-" }}</span>
                                 </div>
-                                <h3 class="ml-2 text-sm font-semibold text-gray-900 dark:text-white">{{ user_review.score|default:"-" }}</h3>
                             </div>
                             <footer class="mb-5 text-sm text-gray-500 dark:text-gray-400"><p>Reviewed by <strong>{{ user_review.user.username }}</strong> at <time datetime="2017-03-03 19:00">{{ user_review.created_at}}</time></p></footer>
                             <p class="mb-2 font-light text-gray-500 dark:text-gray-400">{{user_review.body}}</p>
-                        
                             <aside>
                                 <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">{{ user_review.number_of_upvotes }} people found this helpful</p>
                             </aside>
