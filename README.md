@@ -11,3 +11,9 @@ install tailwind : https://tailwindcss.com/docs/installation?ref=material-tailwi
 materiel tailwind doc : https://www.material-tailwind.com/docs/html/installation#installation
 
 python3 manage.py tailwind start
+
+# Coverage :
+
+python3 -m coverage run --rcfile=.coveragerc manage.py test
+python3 -m coverage report --rcfile=.coveragerc
+
