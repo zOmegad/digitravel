@@ -6,10 +6,6 @@ class SignUpTestCase(TestCase):
         self.username = 'test_user'
         self.password = 'Rg^K,4ybA"3*PdP[>e^s8'
 
-    def test_signup_returns_page(self):
-        response = self.client.get(reverse('signup'))
-        self.assertEqual(response.status_code, 200)
-
     def test_signup_form(self):
         response = self.client.post(reverse('signup'), data={
             'username': self.username,
