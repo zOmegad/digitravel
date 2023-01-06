@@ -22,7 +22,7 @@ class Review(models.Model):
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
         return str(self.post.city)
-    
+
     class Meta:
         unique_together = ('user', 'post',)
     
