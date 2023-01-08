@@ -10,7 +10,7 @@
 
     <aside>
         <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">{{ rev.number_of_upvotes }} people found this helpful</p>
-        <div class="flex items-center mt-3 space-x-3 divide-x divide-gray-200 dark:divide-gray-600">
+        <div class="flex items-center mt-3 space-x-3">
             {% if user.is_authenticated %}
             {% include 'upvote/create_upvote_form.html' %}
             {% include 'upvote/destroy_upvote_form.html' %}
