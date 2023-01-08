@@ -41,7 +41,6 @@ class UpvoteDestroy(TestCase):
     def test_user_destroy_upvote(self):
         post = Post.objects.create()
         u = Upvote.objects.all()
-        print(u)
         review = Review.objects.create(post_id=post.id,
             user_id=self.user.id,
             body="Body test",
@@ -55,7 +54,7 @@ class UpvoteDestroy(TestCase):
             score=5)
         Upvote.objects.create(review=review, user=self.user)
 
-        response = self.client.post(reverse('create_upvote'), data={
+        response = self.client.post(reverse('destroy_upvote'), data={
             'review_id': review.id,
             'post_id': post.id
         })
