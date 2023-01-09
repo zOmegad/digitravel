@@ -10,7 +10,8 @@ class IndexPageTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
     
 class ShowPageTestCase(TestCase):
-    def setUp(self):
+    @classmethod
+    def setUpTestData(cls):
         Post.objects.create(
             city = "Paris",
             country = "France",
@@ -21,6 +22,8 @@ class ShowPageTestCase(TestCase):
             currency = "EUR",
             continent = "Europe",
             region = "West Europe")
+    
+    def setUp(self):
         self.post = Post.objects.first()
 
     def test_show_with_product_returns_200(self):

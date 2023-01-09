@@ -6,8 +6,11 @@ from comment.models import Comment
 
 class CommentTestCase(TestCase):
 
+    @classmethod
+    def setUpTestData(cls):
+        cls.user = User.objects.create_user(username="test_user", password="pass")
+
     def setUp(self):
-        self.user = User.objects.create_user(username="test_user", password="pass")
         self.client.force_login(self.user)
 
     def test_user_create_comment(self):
