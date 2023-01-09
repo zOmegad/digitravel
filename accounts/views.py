@@ -24,10 +24,6 @@ class SignUpView(UserPassesTestMixin, generic.CreateView):
 
     def test_func(self):
         return self.request.user.is_anonymous
-    
-@login_required(login_url='/accounts/login/')
-def login_view(request):
-     return redirect('index')
 
 @login_required
 def profile(request):
