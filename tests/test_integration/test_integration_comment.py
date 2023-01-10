@@ -14,7 +14,7 @@ class CommentTestCase(TestCase):
         self.client.force_login(self.user)
 
     def test_user_create_comment(self):
-        post = Post.objects.create()
+        post = Post.objects.create(city="London")
         response = self.client.post(reverse('create_comment'), data={
             'comment_body': "New comment test",
             'post_id': post.id
@@ -23,6 +23,7 @@ class CommentTestCase(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(last_comment.body, 'New comment test')
         self.assertEqual(last_comment.post_id, post.id)
+        self.assertEqual(str(last_comment), f"{last_comment.id}{last_comment.post.city}")
     
     def test_destroy_comment(self):
         post = Post.objects.create()

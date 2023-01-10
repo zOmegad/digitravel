@@ -37,6 +37,7 @@ class ReviewTestCase(TestCase):
         self.assertEqual(review.life_quality, 5)
         self.assertEqual(review.score, 5)
         self.assertEqual(review.post_id, post.id)
+        self.assertEqual(str(review), f"{review.id}{review.post.city}")
 
     def test_user_edit_review(self):
         post = Post.objects.create(city='City test')

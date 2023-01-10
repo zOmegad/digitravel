@@ -6,7 +6,6 @@ from review.models import Review
 from django.urls import reverse
 
 class UpvoteTestCase(TestCase):
-
     @classmethod
     def setUpTestData(cls):
         cls.user = User.objects.create_user(username="test_user", password="pass",)
@@ -31,12 +30,13 @@ class UpvoteTestCase(TestCase):
             'review_id': review.id,
             'post_id': post.id
         })
+        review_upvote = review.number_of_upvotes
         upvote = Upvote.objects.all()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(len(upvote), 1)
+        self.assertEqual(review_upvote, 1)
 
 class UpvoteDestroy(TestCase):
-    
     @classmethod
     def setUpTestData(cls):
         cls.user = User.objects.create_user(username="test_user", password="pass",)
