@@ -2,18 +2,16 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.keys import Keys
 from django.urls import reverse
-
-import time
-from post.models import Post
 from django.contrib.auth.models import User
 
 class TestUserTests(StaticLiveServerTestCase):
     def setUp(self):
         driver_path = "/Users/omegad/Documents/ocr/p13/digitravel/tests/test_functional/chromedriver"
         chrome_options = Options()
-        #chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--headless")
+        prefs = {"profile.managed_default_content_settings.images": 2}
+        chrome_options.add_experimental_option("prefs", prefs)
         self.browser =  webdriver.Chrome(chrome_options=chrome_options, executable_path=driver_path)
         self.test_host = self.live_server_url
 
@@ -47,4 +45,4 @@ class TestUserTests(StaticLiveServerTestCase):
         form_element.click()
         self.assertEqual(self.browser.current_url, f"{self.test_host}/accounts/profile/")
 
-        
+
