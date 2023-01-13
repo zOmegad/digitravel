@@ -2,6 +2,7 @@ asgiref==3.6.0
 async-generator==1.10
 attrs==22.2.0
 certifi==2022.12.7
+coverage==7.0.5
 Django==4.1.4
 django-browser-reload==1.6.0
 django-mathfilters==1.0.0
