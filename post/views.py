@@ -23,21 +23,17 @@ def index(request):
 
 def show(request, post_id):
     load_dotenv()
-
     item = Post.objects.get(pk=post_id)
     comments = Comment.objects.filter(post_id=post_id)
     reviews = Review.objects.filter(post_id=post_id)
-
     wiki_text_link = requests.get("https://en.wikipedia.org/w/api.php?"
         "action=query&prop=extracts&titles="
         "{}&format=json".format(item.city))
     wiki_text_response = wiki_text_link.json()
-
     wiki_page_id = wiki_text_response["query"]["pages"]
     for i in wiki_page_id:
         page_id = i
         break
-    print(page_id)
     wiki_result_brut = wiki_text_response["query"]["pages"][page_id]["extract"]
     regex = "(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
     wiki_result = re.split(regex, wiki_result_brut)
