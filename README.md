@@ -1,4 +1,8 @@
-# digitravel
+# ✈️ Digitravel
+![image](https://img.shields.io/badge/Python-v3.9.6%20%2B-blue?logo=python)
+
+![image](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green) ![image](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+
 
 # upvotes en back
 p = Post.objects.get(id=2)
