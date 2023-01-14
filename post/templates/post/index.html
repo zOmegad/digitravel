@@ -2,11 +2,11 @@
 {% block content %}
 {% include 'post/search_form.html' %}
 {% if query %}
-{{post.paginator.count}}
-{% for i in post.post_continent %}
-{{ i }}
-{% endfor %}
-{{ post.count }} result(s) for {{ query }} <br>
+<div class="flex flex-wrap justify-center mb-5">
+    <p class="dark:text-white">
+        {{post.paginator.count}} result{{post.paginator.count|pluralize}} for "{{query}}" <br>
+    </p>
+</div>
 {% endif %}
 
 <div class="flex flex-wrap justify-center gap-12">
