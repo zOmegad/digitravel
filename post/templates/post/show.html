@@ -7,7 +7,16 @@
 
         <div style="" class="w-auto p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><span data-flag={{post.language}}></span>&nbsp;{{ post.city }} - {{ post.country }}</h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+            <div class="mb-3 font-normal text-gray-700 dark:text-white">
+                {% if wiki_result %}
+                    {% for i in wiki_result %}
+                        {{ i|safe }} <br>
+                    {% endfor %}
+                    <a class="linkfont-medium text-blue-600 dark:text-blue-500 hover:underline" href="https://en.wikipedia.org/?curid={{page_id}}" target="_blank">Read more ...</a>
+                {% else %}
+                    <p>No data found for <strong>{{ item.city }}</strong></p>
+                {% endif %}
+            </div>
             <div class="grid md:grid-cols-2 md:gap-6">
                 <ul class="space-y-1 max-w-md list-inside text-gray-500 dark:text-gray-400">
                     <li class="flex items-center">

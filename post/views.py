@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.db.models import Avg
 from post.models import Post
 from comment.models import Comment
 from review.models import Review
@@ -8,6 +7,8 @@ from watson import search as watson
 from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
 import os
 from dotenv import load_dotenv
+import requests
+import regex as re
 
 def index(request):
     item = Post.objects.all()
@@ -22,9 +23,25 @@ def index(request):
 
 def show(request, post_id):
     load_dotenv()
+
     item = Post.objects.get(pk=post_id)
     comments = Comment.objects.filter(post_id=post_id)
     reviews = Review.objects.filter(post_id=post_id)
+
+    wiki_text_link = requests.get("https://en.wikipedia.org/w/api.php?"
+        "action=query&prop=extracts&titles="
+        "{}&format=json".format(item.city))
+    wiki_text_response = wiki_text_link.json()
+
+    wiki_page_id = wiki_text_response["query"]["pages"]
+    for i in wiki_page_id:
+        page_id = i
+        break
+    print(page_id)
+    wiki_result_brut = wiki_text_response["query"]["pages"][page_id]["extract"]
+    regex = "(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
+    wiki_result = re.split(regex, wiki_result_brut)
+
     try:
         user_review = Review.objects.get(post_id=post_id, user_id=request.user.id)
     except ObjectDoesNotExist:
@@ -41,6 +58,8 @@ def show(request, post_id):
             'post_cost': item.post_score('cost')["avg_rating"],
             'post_life_quality': item.post_score('life_quality')["avg_rating"],
             'post_hospitality': item.post_score('hospitality')["avg_rating"],
+            'wiki_result': wiki_result[:3],
+            'page_id': page_id,
             'map_api': os.getenv('MAPBOX_API')})
 
 def search(request):
