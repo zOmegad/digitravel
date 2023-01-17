@@ -34,9 +34,12 @@ def show(request, post_id):
     for i in wiki_page_id:
         page_id = i
         break
-    wiki_result_brut = wiki_text_response["query"]["pages"][page_id]["extract"]
-    regex = "(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
-    wiki_result = re.split(regex, wiki_result_brut)
+    try:
+        wiki_result_brut = wiki_text_response["query"]["pages"][page_id]["extract"]
+        regex = "(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s"
+        wiki_result = re.split(regex, wiki_result_brut)
+    except KeyError:
+        wiki_result = ['No results :(']
 
     try:
         user_review = Review.objects.get(post_id=post_id, user_id=request.user.id)
