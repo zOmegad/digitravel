@@ -7,14 +7,8 @@ ___
 Django web application for city referencing built for an Openclassroom project using different API (Wikipedia, Mapbox, country-json).
 ## Requirements
 
-Python 3.9.6 or higer, Django 4.1.4 or higher and pip3.
-- Installation using Virtualenv :
-```shell
-python3 -m virutalenv env && source env/bin/activate
-```
-```shell
-pip3 install -r requirements.txt
-```
+Python 3.9.6 or higher, Django 4.1.4 or higher and pip3.  
+
 ### Tailwind CSS 
 
 Install tailwind : https://tailwindcss.com/docs/installation?ref=material-tailwind  
@@ -32,7 +26,15 @@ DB_PORT=5432
 DB_USER=<user>
 DB_PASSWORD=<password>
 ```
-Then migrate and run server :
+- Installation using Virtualenv :
+```shell
+python3 -m virutalenv env && source env/bin/activate
+```
+```shell
+pip3 install -r requirements.txt
+```
+
+- Migrate and run server :
 ```shell
 python3 manage.py migrate
 ```
@@ -52,11 +54,15 @@ By default database id destroyed and it takes cities with minimum of 500'000 peo
 Arguments :
 
 ```shell
-positional arguments:
-  min_population        Select cities with X minimum of inhabitants | Default : 500000
-
 optional arguments:
   -h, --help            show this help message and exit
+
+  --min_population [MIN_POPULATION]
+                        Select cities with X minimum of inhabitants | Default : 500000
+
+  --max_population [MAX_POPULATION]
+                        Select cities with X maximum of inhabitants
+                        
   --keep_db             Add this if you don't want to delete() curent db before injection
 ```
 
@@ -65,7 +71,6 @@ optional arguments:
 If you want to use Mapbox map API, you need to generate API token and put it in ``.env``as : ``MAPBOX_API=<token>``  
 
 ___
-
 ## Run test
 
 ```shell
