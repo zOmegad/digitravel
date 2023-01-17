@@ -6,11 +6,11 @@
 ___
 Django web application for city referencing built for an Openclassroom project using different API (Wikipedia, Mapbox, country-json).
 
-#### Table of Contents  
-[Requirements](#requirements)  
-[Installation](#installation)  
-[Generate data](#generate_data)  
-[Tesing](#testing)  
+### Table of Contents  
+- [Requirements](#requirements)  
+- [Installation](#installation)  
+- [Generate data](#generate_data)  
+- [Testing](#testing)  
 
 <a name="requirements"/>
 ## Requirements
