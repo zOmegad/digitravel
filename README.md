@@ -8,9 +8,9 @@ Django web application for city referencing built for an Openclassroom project u
 
 #### Table of Contents  
 [Requirements](#requirements)  
-[Installation](#installation)
-[Generating data](#generate_data)
-[Tesing](#testing)
+[Installation](#installation)  
+[Generate data](#generate_data)  
+[Tesing](#testing)  
 
 <a name="requirements"/>
 ## Requirements
@@ -25,6 +25,7 @@ Flowbite documentation : https://flowbite.com/docs/getting-started/django/
 ___
 
 <a name="installation"/>
+
 ## Installation 
 
 You need postgreSQL installed and create connection in ``settings.py``. Create ``.env``file to put your DB variables as it :  
@@ -53,9 +54,10 @@ python3 manage.py runserver
 ```
 
 <a name="generate_data"/>
-## Generating data
 
-To generate data use :  
+## Generate data
+
+To generate data, use :  
 ```shell
 python3 manage.py python3 post_inject
 ```
@@ -81,6 +83,7 @@ If you want to use Mapbox map API, you need to generate API token and put it in 
 
 ___
 <a name="testing"/>
+
 ## Run test
 
 ```shell
