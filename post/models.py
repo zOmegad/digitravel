@@ -22,7 +22,7 @@ class Post(models.Model):
         my_review = Review.objects.filter(post_id=self.id)
         post_score = my_review.aggregate(avg_rating=Avg(field))
         return post_score
-    
+
     @property
     def post_index_score(self):
         from django.db.models import Avg
