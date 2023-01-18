@@ -73,6 +73,7 @@ class ReviewTestCase(TestCase):
         self.assertEqual(review.cost, 4)
         self.assertEqual(review.safety, 4)
         self.assertEqual(review.life_quality, 4)
+        self.assertEqual(review.score, 4)
     
     def test_user_destroy_review(self):
         post = Post.objects.create(city='City test')
