@@ -22,7 +22,7 @@ class SignUpTestCase(TestCase):
             'username': self.username,
             'password': self.password
         })
-        self.assertEqual(response.url, '/accounts/profile/')
+        self.assertEqual(response.url, '/')
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.wsgi_request.user.username, self.username)
     
@@ -31,3 +31,25 @@ class SignUpTestCase(TestCase):
         self.client.force_login(self.user)
         response = self.client.get(reverse('logout'))
         self.assertEqual(response.wsgi_request.user.username, '')
+
+    def test_destroy_with_correct_password(self):
+        self.user = User.objects.create_user(username=self.username, password=self.password)
+        self.client.force_login(self.user)
+        response = self.client.post(reverse('destroy_user'), data={
+            'password': self.password
+        })
+        user = User.objects.last()
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, '/')
+        self.assertEqual(user, None)
+
+    def test_destroy_with_incorrect_password(self):
+        self.user = User.objects.create_user(username=self.username, password=self.password)
+        self.client.force_login(self.user)
+        response = self.client.post(reverse('destroy_user'), data={
+            'password': "caribou"
+        })
+        user = User.objects.last()
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, '/accounts/profile/')
+        self.assertEqual(user, self.user)

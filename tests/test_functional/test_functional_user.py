@@ -43,6 +43,5 @@ class TestUserTests(StaticLiveServerTestCase):
         input_password.send_keys("AZErty123*")
         form_element = self.browser.find_element(By.ID, "submit-button")
         form_element.click()
-        self.assertEqual(self.browser.current_url, f"{self.test_host}/accounts/profile/")
-
-
+        self.assertEqual(self.browser.current_url, f"{self.test_host}/")
+    
