@@ -38,10 +38,11 @@ def profile(request):
 @login_required
 def destroy(request):
     current_user = request.user
-    if current_user.password == request.POST.get("password"):
+    if current_user.check_password(request.POST.get("password")):
         db_user = User.objects.get(id=current_user.id)
         current_user.delete()
         db_user.delete()
+        messages.success(request, 'All your data are destroyed.')
         return redirect("/")
     else:
         messages.error(request, 'Password incorrect.')
