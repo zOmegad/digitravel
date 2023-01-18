@@ -2,6 +2,7 @@ from django.shortcuts import redirect
 from review.models import Review
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 @login_required
 def create(request):
@@ -19,6 +20,7 @@ def create(request):
     new_review.post_id = int(request.POST.get("post_id"))
     try:
         new_review.save()
+        messages.success(request, 'Your review has been posted, thank you for your contribution 😊')
     except IntegrityError as e:
         print(e)
     return redirect('/post/{}'.format(int(request.POST.get("post_id"))))
@@ -27,6 +29,7 @@ def create(request):
 def destroy(request):
     delete_review = Review.objects.get(id=int(request.POST.get("review_id")))
     delete_review.delete()
+    messages.info(request, 'Your review has been deleted &#10003;')
     return redirect('/post/{}'.format(int(request.POST.get("post_id"))))
 
 @login_required
@@ -42,6 +45,7 @@ def edit(request):
     edit_review.body = request.POST.get("body")
     try:
         edit_review.save()
+        messages.info(request, 'Your review has been edited ')
     except KeyError as e:
         print(e)
     return redirect('/post/{}'.format(int(request.POST.get("post_id"))))

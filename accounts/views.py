@@ -5,8 +5,10 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.contrib.auth import login
+from django.contrib.auth.models import User
 from review.models import Review
 from comment.models import Comment
+from django.contrib import messages
 
 
 class SignUpView(UserPassesTestMixin, generic.CreateView):
@@ -32,3 +34,15 @@ def profile(request):
     return render(request, 'profile/profile.html', {
         'user_reviews': user_reviews,
         'user_comments': user_comments})
+
+@login_required
+def destroy(request):
+    current_user = request.user
+    if current_user.password == request.POST.get("password"):
+        db_user = User.objects.get(id=current_user.id)
+        current_user.delete()
+        db_user.delete()
+        return redirect("/")
+    else:
+        messages.error(request, 'Password incorrect.')
+        return redirect(reverse("profile"))
