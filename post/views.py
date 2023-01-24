@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from post.models import Post
 from comment.models import Comment
 from review.models import Review
@@ -9,6 +9,7 @@ import os
 from dotenv import load_dotenv
 import requests
 import regex as re
+
 
 def index(request):
     item = Post.objects.all()
@@ -73,3 +74,6 @@ def search(request):
         page_obj = item_paginator.page(1)
 
     return render(request, 'post/index.html', {'post': page_obj, 'query': query})
+
+def error_404_view(request):
+    return render(request, '404.html')
