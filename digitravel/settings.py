@@ -72,7 +72,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'digitravel.urls'
 
-handler404 = 'post.views.error_404_view'
 
 TEMPLATES = [
     {

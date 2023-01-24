@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from post.models import Post
 from comment.models import Comment
 from review.models import Review
@@ -9,6 +9,7 @@ import os
 from dotenv import load_dotenv
 import requests
 import regex as re
+from django.http import Http404
 
 
 def index(request):
@@ -75,5 +76,5 @@ def search(request):
 
     return render(request, 'post/index.html', {'post': page_obj, 'query': query})
 
-def error_404_view(request, exception):
+def page_not_found(request, exception):
     return render(request, '404.html', status = 404)
