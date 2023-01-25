@@ -8,7 +8,7 @@ from post.models import Post
 
 class TestUserTests(StaticLiveServerTestCase):
     def setUp(self):
-        driver_path = "/Users/omegad/Documents/ocr/p13/digitravel/tests/test_functional/chromedriver"
+        driver_path = "./tests/test_functional/chromedriver"
         chrome_options = Options()
         chrome_options.add_argument("--headless")
         prefs = {"profile.managed_default_content_settings.images": 2}
