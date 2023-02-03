@@ -25,7 +25,7 @@ class Command(BaseCommand):
             cities_injection()
 
         def cities_injection():
-            with open('/Users/omegad/Documents/ocr/p13/digitravel/post/management/commands/worldcities.csv', 'r') as file:
+            with open('./post/management/commands/worldcities.csv', 'r') as file:
                 reader = csv.reader(file)
                 min_population = options['min_population']
                 max_population = options['max_population']
