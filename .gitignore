@@ -6,3 +6,4 @@ htmlcov/
 **/.DS_Store
 .coverage
 chromedriver
+node_modules/
