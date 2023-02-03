@@ -5,21 +5,22 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('post', '0002_photo'),
+        ("post", "0002_photo"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='post',
-            name='upvote',
+            model_name="post",
+            name="upvote",
             field=models.IntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='post',
-            name='upvoted_by',
-            field=models.ManyToManyField(related_name='upvoted_posts', to=settings.AUTH_USER_MODEL),
+            model_name="post",
+            name="upvoted_by",
+            field=models.ManyToManyField(
+                related_name="upvoted_posts", to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]

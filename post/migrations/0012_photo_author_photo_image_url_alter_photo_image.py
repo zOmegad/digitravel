@@ -4,25 +4,24 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('post', '0011_alter_post_options'),
+        ("post", "0011_alter_post_options"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='photo',
-            name='author',
+            model_name="photo",
+            name="author",
             field=models.CharField(blank=True, max_length=90),
         ),
         migrations.AddField(
-            model_name='photo',
-            name='image_url',
+            model_name="photo",
+            name="image_url",
             field=models.CharField(blank=True, max_length=200),
         ),
         migrations.AlterField(
-            model_name='photo',
-            name='image',
-            field=models.ImageField(blank=True, upload_to=''),
+            model_name="photo",
+            name="image",
+            field=models.ImageField(blank=True, upload_to=""),
         ),
     ]

@@ -4,25 +4,24 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('post', '0006_remove_post_upvotes'),
+        ("post", "0006_remove_post_upvotes"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='post',
-            name='latitude',
+            model_name="post",
+            name="latitude",
             field=models.FloatField(default=0),
         ),
         migrations.AddField(
-            model_name='post',
-            name='longitude',
+            model_name="post",
+            name="longitude",
             field=models.FloatField(default=0),
         ),
         migrations.AddField(
-            model_name='post',
-            name='population',
+            model_name="post",
+            name="population",
             field=models.IntegerField(default=0),
         ),
     ]

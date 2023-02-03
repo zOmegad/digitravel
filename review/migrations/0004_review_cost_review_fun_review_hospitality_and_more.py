@@ -4,51 +4,50 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('review', '0003_alter_review_unique_together'),
+        ("review", "0003_alter_review_unique_together"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='review',
-            name='cost',
+            model_name="review",
+            name="cost",
             field=models.IntegerField(default=1),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='review',
-            name='fun',
+            model_name="review",
+            name="fun",
             field=models.IntegerField(default=1),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='review',
-            name='hospitality',
+            model_name="review",
+            name="hospitality",
             field=models.IntegerField(default=1),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='review',
-            name='internet',
+            model_name="review",
+            name="internet",
             field=models.IntegerField(default=1),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='review',
-            name='life_quality',
+            model_name="review",
+            name="life_quality",
             field=models.IntegerField(default=1),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='review',
-            name='safety',
+            model_name="review",
+            name="safety",
             field=models.IntegerField(default=1),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='review',
-            name='score',
+            model_name="review",
+            name="score",
             field=models.FloatField(),
         ),
     ]

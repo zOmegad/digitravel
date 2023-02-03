@@ -20,20 +20,24 @@ class SignUpView(UserPassesTestMixin, generic.CreateView):
         valid = super().form_valid(form)
         login(self.request, self.object)
         return valid
-    
+
     def handle_no_permission(self):
         return redirect(reverse("index"))
 
     def test_func(self):
         return self.request.user.is_anonymous
 
+
 @login_required
 def profile(request):
     user_reviews = Review.objects.filter(user_id=request.user.id)
     user_comments = Comment.objects.filter(user_id=request.user.id)
-    return render(request, 'profile/profile.html', {
-        'user_reviews': user_reviews,
-        'user_comments': user_comments})
+    return render(
+        request,
+        "profile/profile.html",
+        {"user_reviews": user_reviews, "user_comments": user_comments},
+    )
+
 
 @login_required
 def destroy(request):
@@ -42,8 +46,8 @@ def destroy(request):
         db_user = User.objects.get(id=current_user.id)
         current_user.delete()
         db_user.delete()
-        messages.success(request, 'All your data are destroyed.')
+        messages.success(request, "All your data are destroyed.")
         return redirect("/")
     else:
-        messages.error(request, 'Password incorrect.')
+        messages.error(request, "Password incorrect.")
         return redirect(reverse("profile"))

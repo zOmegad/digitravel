@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Post(models.Model):
     city = models.CharField(max_length=40, unique=True)
     country = models.CharField(max_length=40)
@@ -12,13 +13,13 @@ class Post(models.Model):
     region = models.CharField(max_length=30)
 
     def __str__(self):
-        """String for representing the MyModelName object (in Admin site etc.)."""
         return "Id: {} | City: {} ".format(self.id, self.city)
 
     # return avg of scores according to field arg
     def post_score(self, field):
         from django.db.models import Avg
         from review.models import Review
+
         my_review = Review.objects.filter(post_id=self.id)
         post_score = my_review.aggregate(avg_rating=Avg(field))
         return post_score
@@ -27,12 +28,14 @@ class Post(models.Model):
     def post_index_score(self):
         from django.db.models import Avg
         from review.models import Review
+
         my_review = Review.objects.filter(post_id=self.id)
-        post_score = my_review.aggregate(avg_rating=Avg('score'))
+        post_score = my_review.aggregate(avg_rating=Avg("score"))
         return post_score
-    
+
     class Meta:
-        ordering = ('review', )
+        ordering = ("review",)
+
 
 class Photo(models.Model):
     image = models.ImageField(blank=True)

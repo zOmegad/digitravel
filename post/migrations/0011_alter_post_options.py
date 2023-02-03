@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('post', '0010_post_region'),
+        ("post", "0010_post_region"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='post',
-            options={'ordering': ['-id']},
+            name="post",
+            options={"ordering": ["-id"]},
         ),
     ]

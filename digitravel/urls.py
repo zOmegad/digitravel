@@ -18,13 +18,13 @@ from django.urls import path, include
 from post import views as post
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
-    path('', post.index, name='post'),
-    path('post/', include('post.urls')),
-    path('post/comment/', include('comment.urls')),
-    path('post/review/', include('review.urls')),
-    path('post/review/upvote', include('upvote.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path("", post.index, name="post"),
+    path("post/", include("post.urls")),
+    path("post/comment/", include("comment.urls")),
+    path("post/review/", include("review.urls")),
+    path("post/review/upvote", include("upvote.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("accounts/", include("accounts.urls")),
 ]

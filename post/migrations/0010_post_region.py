@@ -4,16 +4,15 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('post', '0009_post_continent'),
+        ("post", "0009_post_continent"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='post',
-            name='region',
-            field=models.CharField(default='prout', max_length=30),
+            model_name="post",
+            name="region",
+            field=models.CharField(default="prout", max_length=30),
             preserve_default=False,
         ),
     ]

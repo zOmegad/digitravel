@@ -4,36 +4,43 @@ from django.contrib.auth.models import User
 from post.models import Post
 from comment.models import Comment
 
-class CommentTestCase(TestCase):
 
+class CommentTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username="test_user", password="pass")
+        cls.user = User.objects.create_user(
+            username="test_user", password="pass"
+        )
 
     def setUp(self):
         self.client.force_login(self.user)
 
     def test_user_create_comment(self):
         post = Post.objects.create(city="London")
-        response = self.client.post(reverse('create_comment'), data={
-            'comment_body': "New comment test",
-            'post_id': post.id
-        })
+        response = self.client.post(
+            reverse("create_comment"),
+            data={"comment_body": "New comment test", "post_id": post.id},
+        )
         last_comment = Comment.objects.last()
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(last_comment.body, 'New comment test')
+        self.assertEqual(last_comment.body, "New comment test")
         self.assertEqual(last_comment.post_id, post.id)
-        self.assertEqual(str(last_comment), f"{last_comment.id}{last_comment.post.city}")
-    
+        self.assertEqual(
+            str(last_comment), f"{last_comment.id}{last_comment.post.city}"
+        )
+
     def test_destroy_comment(self):
         post = Post.objects.create()
-        comment = Comment.objects.create(body="Super comment",
-            post= post,
-            user=self.user)
-        response = self.client.post(reverse('destroy_comment'), data={
-            "comment_id": comment.id,
-            'post_id': post.id,
-        })
+        comment = Comment.objects.create(
+            body="Super comment", post=post, user=self.user
+        )
+        response = self.client.post(
+            reverse("destroy_comment"),
+            data={
+                "comment_id": comment.id,
+                "post_id": post.id,
+            },
+        )
         comment = Comment.objects.all()
         self.assertEqual(len(comment), 0)
         self.assertEqual(response.status_code, 302)

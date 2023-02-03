@@ -5,22 +5,35 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('post', '0001_initial'),
+        ("post", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Review',
+            name="Review",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('header', models.CharField(max_length=90)),
-                ('body', models.TextField(max_length=800)),
-                ('score', models.IntegerField()),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='post.post')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("header", models.CharField(max_length=90)),
+                ("body", models.TextField(max_length=800)),
+                ("score", models.IntegerField()),
+                (
+                    "post",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="post.post",
+                    ),
+                ),
             ],
         ),
     ]
