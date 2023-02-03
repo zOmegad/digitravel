@@ -13,6 +13,7 @@ Django web application for city referencing built for an Openclassroom project u
 - [Testing](#testing)  
 
 <a name="requirements"/>
+
 ## Requirements
 
 Python 3.9.6 or higher, Django 4.1.4 or higher and pip3.  
