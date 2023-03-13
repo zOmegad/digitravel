@@ -7,12 +7,13 @@ jobs:
       OS: ubuntu-latest
       PYTHON: '3.9'
     steps:
-    - uses: checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v3.3.0
       with:
         fetch-depth: ‘2’
 
     - name: Setup Python
-      uses: actions/setup-python@master
+      uses: actions/setup-python@v4.5.0
       with:
         python-version: 3.9.6
     - name: Generate Report
