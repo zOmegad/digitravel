@@ -20,4 +20,4 @@ jobs:
         pip install coverage
         coverage run manage.py test --pattern="test_*.py"
     - name: Upload Coverage to Codecov
-      uses: codecov/codecov-action@v2
+      uses: zOmegad/codecov-action@v2
