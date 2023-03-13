@@ -18,8 +18,7 @@ jobs:
         python-version: 3.9
     - name: Generate Report
       run: |
-        pip install coverage
-        pwd
+        pip install -r requirements.txt
         coverage run manage.py test --pattern="test_*.py"
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
