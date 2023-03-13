@@ -15,7 +15,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v4.5.0
       with:
-        python-version: 3.9.6
+        python-version: 3.9
     - name: Generate Report
       run: |
         pip install coverage
