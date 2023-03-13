@@ -18,7 +18,10 @@ jobs:
         python-version: 3.9
     - name: Generate Report
       run: |
-        pip install -r requirements.txt
-        coverage run manage.py test --pattern="test_*.py"
+        pip install coverage
+        pip install pytest
+        pip install django
+        python3 -m coverage run manage.py test --pattern="test_*.py"
+        python3 -m coverage report --rcfile=.coveragerc
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
